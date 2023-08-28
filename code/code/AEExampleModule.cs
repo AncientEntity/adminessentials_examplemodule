@@ -12,13 +12,23 @@ public static class AEExampleModule
      * - A copy of the scale command from the base Admin Essentials addon renamed to escale.
      * - More coming soon.
      */
-    
-    
-    //The ae_startup event automatically gets ran after everything is loaded in. (Aka ready for modules to load custom commands and such)
-    [Event("ae_startup")]
-    public static void SetupCommands()
+
+    private static bool initialized = false;
+
+    static AEExampleModule()
     {
-        //Register ExampleScaleCommand.
+        Initialize();
+    }
+    
+    //ae_module_IDENT will get ran after your module is mounted. This only gets ran if it is mounted via the modules tab, downloading it separately will not have this run.
+    [Event("ae_module_ryan.adminessentials_examplemodule")]
+    public static void Initialize()
+    {
+        if(initialized) {return;}
+        initialized = true;
+        
         AdminEssentials.AdminEssentials.RegisterCommand(new ExampleScaleCommand());
+        
+        Log.Info("AE Example Module Loaded.");
     }
 }
