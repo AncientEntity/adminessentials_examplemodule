@@ -38,16 +38,16 @@ public class ExampleScaleCommand : BaseCommand
             if (ent != null)
             {
                 ent.Scale = size;
-                CallerPrint(callingUser,"Scale of "+client.Name+" changed to "+size); //CallerPrint will print to the Client provided.
+                ClientPrint(callingUser,"Scale of "+client.Name+" changed to "+size); //CallerPrint will print to the Client provided.
             }
             else
             {
-                CallerPrint(callingUser,"Couldn't get modelentity, may be incompatible with the current gamemode/player pawn.");
+                ClientPrint(callingUser,"Couldn't get modelentity, may be incompatible with the current gamemode/player pawn.");
             }
         }
         else
         {
-            CallerPrint(callingUser,"Couldn't find the user "+args[0]);
+            ClientPrint(callingUser,"Couldn't find the user "+args[0]);
         }
         
     }
